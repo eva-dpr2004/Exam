@@ -1,0 +1,68 @@
+Exo 1 :
+SELECT nom, annéeNaiss FROM artiste WHERE annéeNaiss < 1950; 
+
+Exo 2 :
+SELECT titre, genre FROM film WHERE genre = "Drame"; 
+
+Exo 3 :
+SELECT nom, prénom, nomRôle From artiste NATURAL JOIN role Where nomRôle = "John McClane" AND nom = "Willis" AND prénom = "Bruce"; 
+
+Exo 4 :
+SELECT idRéalisateur, titre From film Where titre = "Memento"; 
+
+Exo 5 :
+SELECT titre, note FROM film NATURAL JOIN notation WHERE titre = "Fargo"; 
+
+Exo 6 :
+SELECT nom, prénom, nomRôle FROM artiste NATURAL JOIN role WHERE nomRôle = "Chewbacca"; 
+
+Exo 7 :
+SELECT nom, prénom, nomRôle, titre From (artiste INNER JOIN role) NATURAL JOIN film Where nomRôle = "John McClane" AND nom = "Willis" AND prénom = "Bruce"; 
+
+Exo 8 :
+SELECT titre, nom From film INNER JOIN artiste Where titre = "Sueurs froides"; 
+
+Exo 9 :
+SELECT nom, prénom , note, titre FROM internaute INNER JOIN notation NATURAL JOIN film WHERE nom = "Nom0" AND prénom = "Prénom0"; 
+
+Exo 10:
+SELECT idRéalisateur, nom, prénom, titre FROM film NATURAL JOIN artiste WHERE nom = "Depp" AND prénom = "Johnny" AND idRéalisateur ="510"; 
+
+Exo 11 :
+SELECT nomRôle, nom , prénom FROM role NATURAL JOIN artiste WHERE prénom = "Woody" AND nom = "Allen"; 
+
+Exo 12 :
+SELECT * FROM film INNER JOIN artiste ON artiste.idArtiste = film.idRéalisateur INNER JOIN role ON role.idFilm = film.idFilm WHERE idRéalisateur = idArtiste; 
+
+Exo 13 :
+SELECT idFilm, nom, prénom, titre FROM artiste NATURAL JOIN film WHERE idRéalisateur = idArtiste AND nom != "Tarantino";     
+
+Exo 14 :
+
+
+Exo 15 :
+SELECT idRéalisateur, nom, prénom FROM artiste NATURAL JOIN film WHERE idRéalisateur = "2636" AND nom !="Stewart" AND prénom !="James"; 
+
+Exo 16 :
+SELECT titre FROM   Film as f, role AS r, Artiste AS a, Artiste as b WHERE  f.idFilm = r.idFilm AND  r.idActeur = a.idArtiste AND  f.idRéalisateur = b.idArtiste AND b.nom='Burton' AND a.nom='Depp';
+
+Exo 17 :
+SELECT titre, idFilm FROM Film WHERE idFilm NOT IN (SELECT idFilm FROM role); 
+
+Exo 18 :
+SELECT nom, prénom , note, titre FROM internaute INNER JOIN notation NATURAL JOIN film WHERE nom != "Nom1" AND prénom != "Prénom1"; 
+
+Exo 19:
+SELECT prénom, nom FROM Artiste LEFT JOIN Film ON Artiste.idArtiste = Film.idRéalisateur WHERE Film.idRéalisateur IS NULL; 
+
+Exo 20:
+SELECT AVG(note), titre FROM notation NATURAL JOIN film WHERE titre = "Memento"; 
+
+Exo 21:
+SELECT a1.prénom as prénom1, a1.nom , titre, a2.prénom as prénom2, a2.nom as nom2 FROM role as r, film as f, artiste as a1, Artiste as a2 WHERE f.idFilm = r.idFilm AND a1.idArtiste != a2.idArtiste AND f.idRéalisateur = a1.idArtiste AND r.idActeur = a2.idArtiste AND a1.prénom = a2.prénom
+
+Exo 22:
+SELECT nom, prénom from Artiste, Film where Film.idRéalisateur = Artiste.idArtiste group by nom, prénom having count(*) > 1; 
+
+Exo 23:
+SELECT AVG(note) FROM notation WHERE note > 7; 
